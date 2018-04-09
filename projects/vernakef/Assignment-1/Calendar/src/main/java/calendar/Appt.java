@@ -176,7 +176,7 @@ public class Appt{
 		else if (startYear <= 0)
 			this.valid = false;
 		else {
-			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
+			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth);
 			if (startDay < 1 || startDay > NumDaysInMonth)
 				this.valid = false;
 			else
@@ -191,7 +191,7 @@ public class Appt{
     	this.startHour = startHour;
     }
     
-    /** Sets startHour */
+    /** Sets startMinute */
     public void setStartMinute(int startMinute) {   	
         this.startMinute = startMinute;
     }
@@ -238,7 +238,7 @@ public class Appt{
         return startHour;
     }
     
-    /** Gets startHour */
+    /** Gets startMinute */
     public int getStartMinute() {
         return startMinute;
     }
@@ -291,7 +291,7 @@ public class Appt{
      * @return True if this appointment has a time set. Otherwise false.
      */
     public boolean hasTimeSet() {
-        return (getStartHour() != NO_TIME);
+        return (getStartHour() == NO_TIME);
     } 
     /**
      * Sets the recurring information with the correct information
@@ -357,7 +357,7 @@ public class Appt{
      * @return a printable representation of this appointment
      */
     private String represntationApp(){
-        String half = (getStartHour() > 11) ? "pm" : "am";
+        String half = (getStartHour() >= 11) ? "pm" : "am";
         int printableHour = getStartHour();
         if (printableHour > 11)
         {

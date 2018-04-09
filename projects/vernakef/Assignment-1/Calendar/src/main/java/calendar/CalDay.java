@@ -154,7 +154,7 @@ public class CalDay {
 	 * are represented by 0-11 
 	 */
 	public int getMonth() {
-	    return month;
+	    return day;
 	}
 	
 	/** Gets year */
